@@ -1,3 +1,7 @@
+target/
+.metals/
+.bsp/
+
 *.class
 *.log
 
