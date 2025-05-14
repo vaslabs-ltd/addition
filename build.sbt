@@ -11,8 +11,9 @@ lazy val root = (project in file(".")).
   )
 
   releaseProcess := Seq[ReleaseStep](
-    inquireVersions,
-    setNextVersion,
-    commitReleaseVersion,              
+    inquireVersions,           
     tagRelease,
+    setNextVersion,
+    commitReleaseVersion,
+    pushChanges
   )
