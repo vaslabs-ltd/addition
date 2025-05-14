@@ -14,8 +14,9 @@ releaseProcess := Seq[ReleaseStep](
   inquireVersions,           
   setReleaseVersion,
   commitReleaseVersion,
-  tagRelease,
-  setNextVersion,
-  commitNextVersion,                   
-  pushChanges
+  // tagRelease,
+  "Universal/PackageBin",
+  // setNextVersion,
+  // commitNextVersion,                   
+  // pushChanges
 )
