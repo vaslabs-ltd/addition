@@ -10,10 +10,10 @@ lazy val root = (project in file(".")).
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % "test"
   )
 
-  releaseProcess := Seq[ReleaseStep](
-    inquireVersions,           
-    tagRelease,
-    setNextVersion,
-    commitReleaseVersion,
-    pushChanges
-  )
+releaseProcess := Seq[ReleaseStep](
+  inquireVersions,           
+  tagRelease,
+  setNextVersion,
+  commitReleaseVersion,
+  pushChanges
+)
