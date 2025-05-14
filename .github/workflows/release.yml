@@ -1,16 +1,15 @@
-name: Publish Artifacts
+name: Release
 
-on: 
+on:
   push:
-    tags:
-    - '*'
+    branches: [ "main" ]
+
+permissions:
+  contents: write
 
 jobs:
-
-  build:
+  create_tag:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 11
@@ -21,9 +20,13 @@ jobs:
         cache: 'sbt'
     - name: Setup sbt launcher
       uses: sbt/setup-sbt@v1
-    - name: Run tests
+    - name: Push a tag
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        sbt "release with-defaults"
+    - name: Create universal zip
       run: sbt Universal/packageBin
-
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "target/*.zip"
