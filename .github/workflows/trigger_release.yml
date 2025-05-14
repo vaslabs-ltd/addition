@@ -5,10 +5,10 @@ on:
     branches: [ "main" ]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  build:
+  create_tag:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
