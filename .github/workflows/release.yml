@@ -1,0 +1,22 @@
+name: Release
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ncipollo/release-action@v1
+      with:
+        commit: ${{ github.ref }}
+        tag: ${{ github.ref }}
+        artifacts: "target/*.zip"
+        bodyFile: "README.md"

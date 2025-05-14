@@ -1,6 +1,8 @@
 target/
 .metals/
 .bsp/
+.scala-build/
+.vscode/
 
 *.class
 *.log
