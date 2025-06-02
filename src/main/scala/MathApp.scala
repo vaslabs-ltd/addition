@@ -1,4 +1,6 @@
-@main def mathOps(a: Int, operation: String, b: Int) =
+@main def mathOps(a: Int, operation: String, b: Int, extraArgs: String*) =
     val operationFunction = MathOpsInput.parse(operation)
-    val result = operationFunction(a, b)
-    println(s"${a} ${operation} ${b} = $result")
+    val nextOperand = MathOpsInput.parse(extraArgs)
+    val result = (operationFunction.tupled andThen nextOperand)(a, b)
+    val extraArgsOut = extraArgs.mkString(" ", " ", "")
+    println(s"${a} ${operation} ${b}${extraArgsOut} = $result")

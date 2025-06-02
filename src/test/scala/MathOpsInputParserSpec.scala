@@ -18,4 +18,14 @@ class MathOpsInputParserSpec extends AnyFlatSpec with must.Matchers {
         MathOpsInput.parse("o")
     }
   }
+
+  "no extra operands" must "not apply any operations" in {
+    val nextOperand = MathOpsInput.parse(Seq.empty)
+    nextOperand.apply(10) mustEqual 10
+  }
+
+  "extra pair of operands of multiplication and 4" must "be parsed" in {
+    val nextOperand = MathOpsInput.parse(Seq("*", "5"))
+    nextOperand.apply(10) mustEqual 50
+  }
 }
