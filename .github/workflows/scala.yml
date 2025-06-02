@@ -31,6 +31,8 @@ jobs:
       uses: sbt/setup-sbt@v1
     - name: Run tests
       run: sbt clean coverage test
+    - name: Coverage report
+      run: sbt coverageReport
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:
